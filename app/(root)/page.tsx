@@ -2,6 +2,8 @@ import Link from "next/link";
 import Image from "next/image";
 
 import { Button } from "@/components/ui/button";
+import InterviewCard from "@/components/InterviewCard";
+import { dummyInterviews } from "@/constants";
 
 async function Home() {
   return (
@@ -29,10 +31,44 @@ async function Home() {
 
       <section className="flex flex-col gap-6 mt-8">
         <h2>Your Interviews</h2>
+
+        <div className="interviews-section">
+          {dummyInterviews ? (
+            dummyInterviews?.map((interview) => (
+              <InterviewCard
+                key={interview.id}
+                interviewId={interview.id}
+                role={interview.role}
+                type={interview.type}
+                techstack={interview.techstack}
+                createdAt={interview.createdAt}
+              />
+            ))
+          ) : (
+            <p>You haven&apos;t taken any interviews yet</p>
+          )}
+        </div>
       </section>
 
       <section className="flex flex-col gap-6 mt-8">
         <h2>Take Interviews</h2>
+
+        <div className="interviews-section">
+          {dummyInterviews ? (
+            dummyInterviews?.map((interview) => (
+              <InterviewCard
+                key={interview.id}
+                interviewId={interview.id}
+                role={interview.role}
+                type={interview.type}
+                techstack={interview.techstack}
+                createdAt={interview.createdAt}
+              />
+            ))
+          ) : (
+            <p>You haven&apos;t taken any interviews yet</p>
+          )}
+        </div>
       </section>
     </>
   );
